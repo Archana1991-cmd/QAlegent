@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<parameter name="Browser" value="Edge"/>
+	<listeners>
+		 <listener class-name="QAlegendTestCases.Listeners"></listener>
+	</listeners>
+	<parameter name="Browser" value="Edge"></parameter>
   <test thread-count="5" name="Test">
     <classes>
       <class name="QAlegendTestCases.TestCases">
       <methods>
-		 <include name="deleteUser">
-			
-		 </include>
-		 
-	  </methods>
+		
+		 <!--<include name="createUser"></include> -->
+		 <!--<include name="addRoles"></include> --> 
+		 <!--<include name="salesCommissionAgents"></include>  -->
+		 <!--<include name=""></include>-->
+		 <!--<include name="createCustomer"></include>-->
+		 <!--<include name="importProducts"></include>-->
+         <!--<include name="addBrands"></include>-->
+		 <include name="addCategories"></include>
+		 </methods>
 	  </class>
 	   </classes>
-  </test> <!-- Test -->
+ </test> <!-- Test -->
 </suite> <!-- Suite -->

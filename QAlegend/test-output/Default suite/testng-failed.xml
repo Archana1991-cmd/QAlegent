@@ -5,8 +5,9 @@
     <classes>
       <class name="QAlegendTestCases.TestCases">
         <methods>
+          <include name="userCreation"/>
+          <include name="customerCreation"/>
           <include name="initialization"/>
-          <include name="deleteUser"/>
         </methods>
       </class> <!-- QAlegendTestCases.TestCases -->
     </classes>

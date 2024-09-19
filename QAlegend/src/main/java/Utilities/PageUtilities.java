@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class PageUtilities {
+	
 
 	public static void clickOnElement(WebElement element) 
 	{
@@ -27,6 +28,9 @@ public class PageUtilities {
 	}
 	public static void clearText(WebElement element) {
 		element.clear();
+	}
+	public static void navigateToBack(WebDriver driver) {
+		driver.navigate().back();
 	}
 	public static void navigateToForward(WebDriver driver) {
 		driver.navigate().forward();
@@ -69,14 +73,16 @@ public class PageUtilities {
 	}
 	
 	public static String getPageTitle(WebDriver driver) {
-		return driver.getTitle();
+		return (driver.getTitle());
 		
 	}
 	
 	public static void clickUsingJavaScriptExecutor(WebDriver driver,WebElement element) {
 		JavascriptExecutor executor=(JavascriptExecutor)driver;
 		executor.executeScript("argument[0]", element);
+		
 	}
+	
 	
 	public static void scrollBy(WebDriver driver) {
 		JavascriptExecutor executor=(JavascriptExecutor)driver;
