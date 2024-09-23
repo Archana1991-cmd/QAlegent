@@ -143,6 +143,7 @@ public class TestCases extends BaseClass{
   			  String mobile= randomnumber+ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
   			  supplierspage.insertSuppliers("Suppliers",name,businessname,mobile);
   			  supplierspage.clickOnSaveButton();
+  			  
   		      softassert.assertAll();
         	 
 		}
