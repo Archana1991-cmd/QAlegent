@@ -9,49 +9,17 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">0</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">344,224</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">87,992</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">QAlegendTestCases.TestCases</td><td><a href="#m0">initialization</a></td><td rowspan="1">1726773134092</td><td rowspan="1">343713</td></tr><tr><th colspan="4">Test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">QAlegendTestCases.TestCases</td><td><a href="#m1">addCategories</a></td><td rowspan="1">1726773477905</td><td rowspan="1">2</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">QAlegendTestCases.TestCases</td><td><a href="#m0">createCustomer</a></td><td rowspan="1">1727104345748</td><td rowspan="1">20008</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">QAlegendTestCases.TestCases#initialization</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>Edge</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.WebDriverException: target frame detached: received Inspector.detached event
-  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
-  (Session info: MicrosoftEdge=128.0.2739.79)
-Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [ba563e664f20514697d9d2259f1a7b1c, get {url=https://qalegend.com/billing/public/login}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.79, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:63899}, msedge: {msedgedriverVersion: 128.0.2739.79 (9fa544bdb74f..., userDataDir: C:\Users\lenovo\AppData\Loc...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63899/devtoo..., se:cdpVersion: 128.0.2739.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ba563e664f20514697d9d2259f1a7b1c
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:302)
-	at QAlegendTestCases.TestCases.initialization(TestCases.java:59)
+<h2>Test</h2><h3 id="m0">QAlegendTestCases.TestCases#createCustomer</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IllegalStateException: Cannot get a STRING value from a NUMERIC cell
+	at org.apache.poi.xssf.usermodel.XSSFCell.typeMismatch(XSSFCell.java:987)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getRichStringCellValue(XSSFCell.java:336)
+	at org.apache.poi.xssf.usermodel.XSSFCell.getStringCellValue(XSSFCell.java:280)
+	at Utilities.ExcelUtilities.getString(ExcelUtilities.java:22)
+	at QAlegendTestCases.TestCases.createCustomer(TestCases.java:161)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 36 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">QAlegendTestCases.TestCases#addCategories</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.WebDriverException: target frame detached: received Inspector.detached event
-  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
-  (Session info: MicrosoftEdge=128.0.2739.79)
-Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.10&apos;
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [ba563e664f20514697d9d2259f1a7b1c, get {url=https://qalegend.com/billing/public/login}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.79, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:63899}, msedge: {msedgedriverVersion: 128.0.2739.79 (9fa544bdb74f..., userDataDir: C:\Users\lenovo\AppData\Loc...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63899/devtoo..., se:cdpVersion: 128.0.2739.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ba563e664f20514697d9d2259f1a7b1c
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
-	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:302)
-	at QAlegendTestCases.TestCases.initialization(TestCases.java:59)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 36 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 27 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -12,26 +12,7 @@ public class QAlegendUserPage {
              
              @FindBy(xpath="//a[@class='btn btn-block btn-primary']")
              WebElement userAddOption;
-             public void clickOnUserAddOption() {
-         		
-       		  PageUtilities.clickOnElement(userAddOption);
-       	}
-
              
-			 /*By Prefix=By.id("surname");
-			
-			 By Firstname=By.id("first_name");
-			
-			 By Lastname=By.id=("last_name");
-			
-			 By Email=By.id("email");
-			 
-			 By Username=By.id("username");
-			
-			 By Password=By.id("password");
-			
-			 By Confirmpassword=By.id("confirm_password");*/
-			
              @FindBy(id="surname")
              WebElement Surnamebox;
              @FindBy(id="first_name")
@@ -70,7 +51,11 @@ public class QAlegendUserPage {
 		 this.driver=driver;
 		 PageFactory.initElements(driver, this);
 	}
-     
+	
+	public void clickOnUserAddOption() {
+  		 PageUtilities.clickOnElement(userAddOption);
+  	     }
+
 
 	public void insertUserQAlegent(String surname,String firstname,String lastname,String email,String username,String password,String confirmpassword) {
 		 
@@ -102,15 +87,9 @@ public class QAlegendUserPage {
 		PageUtilities.clickOnElement(pressOkButtonToDelete);
 	 }
 
-
-
-	/*public String noMatchingRecordsFound() {
+	public String noMatchingRecordsFound() {
 		
-		return (PageUtilities.getElementText(errorMessege);
-	}*/
-
-
-	
-	
+		return (PageUtilities.getElementText(errorMessege));
+	}
 
 	}

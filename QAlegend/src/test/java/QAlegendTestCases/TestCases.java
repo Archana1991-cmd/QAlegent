@@ -1,23 +1,26 @@
 package QAlegendTestCases;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import AutomationCore.BaseClass;
 import PageClasses.QAlegendLoginPage;
 import PageClasses.QAlegendRolesPage;
-import PageClasses.QAlegendSalesCommissionAgentsPage;
 import PageClasses.QAlegendSuppliersPage;
+import PageClasses.QAlegendUnitsPage;
 import PageClasses.QAlegendBrandsPage;
 import PageClasses.QAlegendCategoriesPage;
 import PageClasses.QAlegendCustomerPage;
@@ -25,10 +28,10 @@ import PageClasses.QAlegendHomePage;
 import PageClasses.QAlegendImportProductPage;
 import PageClasses.QAlegendUserPage;
 import Utilities.ExcelUtilities;
-import dev.failsafe.internal.util.Assert;
 
 
 public class TestCases extends BaseClass{
+	
 	
 		WebDriver driver;
 		QAlegendLoginPage loginpage;
@@ -36,14 +39,15 @@ public class TestCases extends BaseClass{
 		QAlegendUserPage userpage;
 		QAlegendCustomerPage customerpage;
 		QAlegendRolesPage rolespage;
-		QAlegendSalesCommissionAgentsPage salescommisionagentspage;
 		QAlegendSuppliersPage supplierspage;
 		QAlegendImportProductPage importproductpage;
 		QAlegendBrandsPage brandspage;
 		QAlegendCategoriesPage categoriespage;
+		QAlegendUnitsPage unitspage;
 		 Properties prop;
 		 FileReader reader;
-		 String addRolename;
+		 SoftAssert softassert;
+		
 		
 	
 		
@@ -64,11 +68,11 @@ public class TestCases extends BaseClass{
 			userpage=new QAlegendUserPage(driver);
 			customerpage=new QAlegendCustomerPage(driver);
 			rolespage=new QAlegendRolesPage(driver);
-			salescommisionagentspage=new QAlegendSalesCommissionAgentsPage(driver);
 			supplierspage=new QAlegendSuppliersPage(driver);
 			importproductpage=new QAlegendImportProductPage(driver);
 			brandspage=new QAlegendBrandsPage(driver);
 			categoriespage=new QAlegendCategoriesPage(driver);
+			softassert=new SoftAssert();
 		}
          @Test
 		public void  createUser() throws IOException{
@@ -107,88 +111,98 @@ public class TestCases extends BaseClass{
 			userpage.pressOkButtonToDelete();
 			
 			//userpage.enterUsersearch("ammutty");
-		    //Assert.assertEquals(userpage.noMatchingRecordsFound(),"No matching records found");
+		    Assert.assertEquals(userpage.noMatchingRecordsFound(),"No matching records found");
+		    softassert.assertAll();
 		}
          @Test
-         public  void addRoles() throws IOException {
+         public  void addRoles() throws IOException, InterruptedException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 
         	 homepage.clickOnUserManagementOption();
-        	 
-        	 homepage.clickOnUserAction();
-        	 
- 			 homepage.clickOnRolesOption();
- 			 
- 			 homepage.clickOnRoleAddButton();
- 			 
- 			 
- 			Random rand=new Random();
-		    int randomnumber=rand.nextInt(10000);
-			String addRolename=ExcelUtilities.getString(1, 0, "//src//main//java//resources//userDetails.xlsx", "Sheet2");
- 			
-			rolespage.insertRoleName(addRolename);
-			//rolespage.insertRoleName("Archana");
-			
-			rolespage.clickOnSaveButton();
+        	 rolespage.clickOnRolesOption();
+        	 rolespage.clickOnRoleAddButton();
+ 			 rolespage.insertRoleName("qa tester");
+             rolespage.clickOnSaveButton();
+             //Assert.assertNotEquals(rolespage.insertRoleName("qa tester"),"tester");
+             softassert.assertAll();
 		}
+         
          @Test
-         public  void salesCommissionAgents() throws IOException {
-        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
-        	 
-             homepage.clickOnUserManagementOption();
-        	 
- 			 homepage.clickOnsalesCommissionAgentsOption();
- 			 
- 			 homepage.clickOnsalesCommissionAgentsAddButton();
- 			 
- 			Random rand=new Random();
-		    int randomnumber=rand.nextInt(10000);
-			String surname=ExcelUtilities.getString(1, 0, "src//main//java//resources//salescmmn.xlsx", "Sheet3");
-			String firstname=ExcelUtilities.getString(1, 1, "src//main//java//resources//salescmmn.xlsx", "Sheet3");
-			String email= randomnumber+ExcelUtilities.getString(1, 3, "src//main//java//resources//salescmmn.xlsx", "Sheet3");
-			String contactno= randomnumber+ExcelUtilities.getNumeric(1, 4,"src//main//java//resources//salescmmn.xlsx", "Sheet3");
-			String salesCommissionPercentage =ExcelUtilities.getString(1, 5, "src//main//java//resources//salescmmn.xlsx", "Sheet3");
-			
-			
- 			salescommisionagentspage.clickOnSavebutton();
-        	 
-		}
-         @Test
-         public  void addSuppliers() {
+         public  void addSuppliers() throws IOException, InterruptedException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 
         	  homepage.clickOnContactsOption();
         	  supplierspage.clickOnSuppliersOption();
+        	  supplierspage.clickOnAddButton();
+        	  
+        	  Random rand=new Random();
+  		      int randomnumber=rand.nextInt(10000);
+  			  String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			  String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			  String businessname=ExcelUtilities.getString(1, 2, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			  String mobile= randomnumber+ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			  supplierspage.insertSuppliers("Suppliers",name,businessname,mobile);
+  			  supplierspage.clickOnSaveButton();
+  		      softassert.assertAll();
         	 
 		}
          @Test
-       public void createCustomer() throws IOException {
+       public void createCustomer() throws IOException, InterruptedException {
         	 
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
+        	 homepage.clickOnContactsOption();
+        	 customerpage.clickOnCustomerOption();
+        	 customerpage.clickOnCustomerAddOption();
         	 
-        	 customerpage.clickOnCutomerOption();
-        	 customerpage.clickOnContactsButton();
-        	 customerpage.dropdownSelectByVisibleText();
-        	 
-        	 String contactid=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomer.xlsx","Sheet2");
-        	 String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addACustomer.xlsx","Sheet2");
-        	 String mobile=ExcelUtilities.getString(1, 2, "//src//main//java//resources//addACustomer.xlsx","Sheet2");
-        	 
+        	 Random rand=new Random();
+ 		     int randomnumber=rand.nextInt(10000);
+        	 String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
+        	 String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
+        	 String contactid=randomnumber+ExcelUtilities.getNumeric(1, 2, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
+        	 String mobile=ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
+        	// customerpage.insertSuppliers("Cusomers",name,contactid,mobile);
+        	 customerpage.clickOnSaveButton();
+        	 softassert.assertAll();
 		}
          @Test
-         public  void  importProducts() {
+         public  void  importProducts(Object choosefile) throws AWTException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	
         	importproductpage.clickOnProductsOption();
         	importproductpage.clickOnImportProductsOption();
         	importproductpage.clickOnChooseFileButton();
-        	importproductpage.clickUsingJavaScriptExecutor();
-        	importproductpage.setClickBoardData(null);
+        	 
+			importproductpage.clickUsingJavaScriptExecutor(driver,choosefile);
+        	
+        	
+        	Robot robot=new Robot();
+        	robot.delay(300);
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+        	robot.keyPress(KeyEvent.VK_V);
+        	robot.keyRelease(KeyEvent.VK_V);
+        	robot.keyRelease(KeyEvent.VK_CONTROL);
+        	robot.keyPress(KeyEvent.VK_ENTER);
+        	robot.delay(300);
+        	robot.keyRelease(KeyEvent.VK_ENTER);
+        	
         	importproductpage.clickOnSubmitButton();
-        		
+        
 		}
-         public void addUnits() {
+         
+		@Test
+         public void addUnits() throws IOException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
+        	 
+        	 unitspage.clickOnProductsOption();
+        	 unitspage.clickOnUnitsOption();
+        	 unitspage.clickOnAddbutton();
+    
+ 			 String name=ExcelUtilities.getString(1, 0, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+ 			 String shortname=ExcelUtilities.getString(1, 1, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+ 			 unitspage.insertUnits(name,shortname,"Yes");
+ 			 unitspage.clickOnSaveButton();
+ 			 
+ 			 softassert.assertAll();
 			
 		}
          @Test
@@ -201,13 +215,15 @@ public class TestCases extends BaseClass{
         	 
         	 Random rand=new Random();
  		     int randomnumber=rand.nextInt(10000);
- 			 String categoriesname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//userDetails.xlsx", "Sheet5");
- 			 String categoriescode=ExcelUtilities.getString(1, 0, "//src//main//java//resources//userDetails.xlsx", "Sheet5");
+ 			 String categoriesname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
+ 			 String categoriescode=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
  			 
  			 categoriespage.insertOnCategoriesNameBox(categoriesname);
  			 categoriespage.insertOnCategoryCodeBox(categoriescode);
  			 categoriespage.clickOnSaveButton();
- 			 
+ 			 categoriespage.enterUsersearch("customer02398");
+ 			 Assert.assertEquals(categoriespage.NoMatchingRecordsFound(),"no matching records found");
+			 softassert.assertAll();
   			 
  		}
          @Test
@@ -220,17 +236,16 @@ public class TestCases extends BaseClass{
  			 
  			Random rand=new Random();
 		    int randomnumber=rand.nextInt(10000);
-			String brandname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//userDetails.xlsx", "Sheet4");
+			String brandname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addBrands.xlsx", "Sheet1");
+			String notes=ExcelUtilities.getString(1, 1, "//src/main//java//resources//addBrands.xlsx", "Sheet1");
  			 
  			 brandspage.insertOnBrandNameBox(brandname);
- 			 brandspage.clickOnSaveButton(); 
+ 			 brandspage.insertOnshortdiscriptionBox(notes);
+ 			 brandspage.clickOnSaveButton();
+ 			 brandspage.enterUsersearch("zudioz");
+ 		     Assert.assertEquals(brandspage.noMatchingRecordsFound(),"No matching records found");
+ 			 softassert.assertAll();
  		}
-         public void addPurchase() {
-        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
-     	 
-        	 
- 			
- 		}
-         
+        
          
 }

@@ -1,5 +1,6 @@
 package PageClasses;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,15 +47,17 @@ public class QAlegendImportProductPage {
 			PageUtilities.clickOnElement(submit);
 		}
 		
-		public void clickUsingJavaScriptExecutor() {
+		public void JavascriptExecutor (WebDriver driver,WebElement choosefile) {
 			PageUtilities.clickUsingJavaScriptExecutor(driver, choosefile);
-			setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
+			choosefile=setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
 		}
-		public void setClickBoardData(String string) {
+		private WebElement setClickBoardData(String string) {
+			
+			return null;
+		}
+		public void clickUsingJavaScriptExecutor(WebDriver driver2, Object choosefile2) {
 			PageUtilities.clickUsingJavaScriptExecutor(driver, choosefile);
-			setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
+			choosefile=setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
 			
 		}
-		
-		
 }

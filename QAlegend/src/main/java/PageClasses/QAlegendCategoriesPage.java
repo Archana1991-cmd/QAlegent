@@ -22,7 +22,11 @@ public class QAlegendCategoriesPage {
            WebElement CategoriesCodebox;
            @FindBy(xpath = "//button[text()='Save']")
            WebElement savebutton;
-           
+           @FindBy(xpath = "(//input[@class='form-control input-sm'])[1]")
+   	       WebElement searchbutton;
+           @FindBy(xpath = "(//input[@class='form-control input-sm'])[1]")
+   	       WebElement errorMessege;
+   	    
            public QAlegendCategoriesPage(WebDriver driver) {
           	  this.driver=driver;
         	  PageFactory.initElements(driver, this);
@@ -58,5 +62,12 @@ public class QAlegendCategoriesPage {
         public void clickOnSaveButton() {
 			PageUtilities.clickOnElement(savebutton);
 			
+		}
+        public void enterUsersearch(String brandname) {
+		    PageUtilities.enterText(searchbutton,  brandname);
+	     }
+
+		public String NoMatchingRecordsFound() {
+			return (PageUtilities.getElementText(errorMessege));
 		}
 }

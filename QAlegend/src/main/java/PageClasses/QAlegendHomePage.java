@@ -21,18 +21,6 @@ public class QAlegendHomePage {
 	@FindBy(xpath="//button[text()='End tour']")
 	WebElement endTourButton;
 	
-	@FindBy(xpath="(//span[@class='title'])[3]")
-    WebElement roles;
-	
-	@FindBy(xpath="//a[@class='btn btn-block btn-primary']")
-    WebElement roleAddButton;
-	   
-	@FindBy(xpath = "(//span[@class='title'])[4]")
-	WebElement salescommissionAgentsOption;
-	
-	@FindBy(xpath="//button[@class='btn btn-primary btn-modal pull-right']")
-	WebElement salescommissionAgentsaddOption;
-	
 	@FindBy(xpath = "//span[text()='Contacts']")
 	WebElement contactsoption;
 	
@@ -51,26 +39,6 @@ public class QAlegendHomePage {
 	public QAlegendHomePage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
-	}
-
-	public void clickOnRolesOption() {
-		PageUtilities.clickOnElement(roles);
-		
-	}
-
-	 public void clickOnRoleAddButton() {
-   		PageUtilities.clickOnElement(roleAddButton);
-   		
-   	}
-
-	public void clickOnsalesCommissionAgentsOption() {
-		PageUtilities.clickOnElement(salescommissionAgentsOption);
-		
-	}
-
-	public void clickOnsalesCommissionAgentsAddButton() {
-		PageUtilities.clickOnElement(salescommissionAgentsaddOption);
-		
 	}
 
 	public void clickOnContactsOption() {

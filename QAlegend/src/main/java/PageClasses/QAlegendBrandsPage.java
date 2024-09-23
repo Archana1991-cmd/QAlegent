@@ -22,8 +22,17 @@ public class QAlegendBrandsPage {
 	    @FindBy(id="name")
 	    WebElement BrandNameBox;
 	    
+	    @FindBy(id = "description")
+	    WebElement shortdiscriptionbox;
+	    
 	    @FindBy(xpath = "//button[text()='Save']")
 	    WebElement savebutton;
+	    
+	    @FindBy(xpath = "(//input[@class='form-control input-sm'])[1]")
+	    WebElement searchbutton;
+	    
+	    @FindBy(xpath = "//td[text()='No matching records found']")
+	    WebElement errorMessege;
 
         public QAlegendBrandsPage(WebDriver driver) {
         	this.driver=driver;
@@ -46,18 +55,29 @@ public class QAlegendBrandsPage {
 			
 		}
 
-		
-
 		public String insertOnBrandNameBox(String brandname) {
 			PageUtilities.enterText(BrandNameBox, brandname);
 			return brandname;
 			
 		}
-
+		 public String insertOnshortdiscriptionBox(String notes) {
+			PageUtilities.enterText(shortdiscriptionbox, notes);
+			return notes;
+		}
 		public void clickOnSaveButton() {
 			PageUtilities.clickOnElement(savebutton);
 			
 		}
+		 public void enterUsersearch(String brandname) {
+			    PageUtilities.enterText(searchbutton,  brandname);
+		     }
+
+		public String noMatchingRecordsFound() {
+			
+			return (PageUtilities.getElementText(errorMessege));
+		}
+
+		
 
 		
 }	

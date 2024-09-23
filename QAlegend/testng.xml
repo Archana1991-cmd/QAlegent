@@ -10,16 +10,19 @@
       <class name="QAlegendTestCases.TestCases">
       <methods>
 		
-		 <!--<include name="createUser"></include> -->
-		 <!--<include name="addRoles"></include> --> 
+		 <include name="createCustomer"></include>
+		<!--<include name="addSuppliers"></include>-->
 		 <!--<include name="salesCommissionAgents"></include>  -->
 		 <!--<include name=""></include>-->
 		 <!--<include name="createCustomer"></include>-->
 		 <!--<include name="importProducts"></include>-->
-         <!--<include name="addBrands"></include>-->
-		 <include name="addCategories"></include>
+         <!--<include name="addUnits"></include> -->
+		  <!--<include name="addCategories"></include> --> 
 		 </methods>
 	  </class>
 	   </classes>
  </test> <!-- Test -->
 </suite> <!-- Suite -->
+ 
+ 
+ 

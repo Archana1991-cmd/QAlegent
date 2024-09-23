@@ -10,9 +10,12 @@ import Utilities.PageUtilities;
 public class QAlegendRolesPage {
        WebDriver driver;
       
+       @FindBy(xpath="(//span[@class='title'])[3]")
+       WebElement roles;
    	
-   	 
-     	
+   	   @FindBy(xpath="//a[@class='btn btn-block btn-primary']")
+       WebElement roleAddButton;
+   	
    	   @FindBy(xpath = "//input[@class='form-control']")
    	   WebElement AddRoleName;
    	
@@ -25,7 +28,18 @@ public class QAlegendRolesPage {
    		   PageFactory.initElements(driver, this);
  	}
       
-   	  
+
+   	public void clickOnRolesOption() {
+   		PageUtilities.clickOnElement(roles);
+   		
+   	}
+
+   	 public void clickOnRoleAddButton() {
+      		PageUtilities.clickOnElement(roleAddButton);
+      		
+      	}
+
+  
 	public void insertRoleName(String addRolename) {
 		PageUtilities.enterText(AddRoleName, addRolename);
 	}
@@ -36,6 +50,6 @@ public class QAlegendRolesPage {
 	   		PageUtilities.clickOnElement(saveButton);
 	   		
 	   	}
-		
-       
+
+
 }
