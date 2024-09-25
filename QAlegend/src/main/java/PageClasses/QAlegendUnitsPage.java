@@ -17,16 +17,19 @@ public class QAlegendUnitsPage {
     WebElement unitsoption;
     @FindBy(xpath = "//button[@class='btn btn-block btn-primary btn-modal']")
     WebElement addbutton;
-    @FindBy(id = "actual_name")
+    @FindBy(xpath = "(//input[@class='form-control'])[1]")
     WebElement Name;
-    @FindBy(id = "short_name")
+    @FindBy(xpath = "(//input[@class='form-control'])[2]")
     WebElement Shortname;
-    @FindBy(xpath = "//button[text()='Save']")
-    WebElement savebutton;
     @FindBy(id = "allow_decimal")
     WebElement Allowdecimal;
-    @FindBy(xpath = "//option[text()='Yes']")
-    WebElement yes;
+    @FindBy(xpath = "//button[text()='Save']")
+    WebElement savebutton;
+    @FindBy(xpath = "//input[@class='form-control input-sm']")
+    WebElement Searchbutton;
+    @FindBy(xpath = "//td[text()='No matching records found']")
+    WebElement errorMessege;
+    
     
     public QAlegendUnitsPage(WebDriver driver) {
 		 this.driver=driver;
@@ -52,12 +55,23 @@ public class QAlegendUnitsPage {
 	public void insertUnits(String name, String shortname, String allowdecimal) {
 		PageUtilities.enterText(Name, name);
 		PageUtilities.enterText(Shortname, shortname);
-		PageUtilities.enterText(Allowdecimal, allowdecimal);
+		PageUtilities.dropdownSelectByVisibleText(Allowdecimal, allowdecimal);;
 	}
 
 	public void clickOnSaveButton() {
 		PageUtilities.clickOnElement(savebutton);
 		
+	}
+
+	public void enterUserSearchbutton(String searchbutton) {
+		PageUtilities.enterText(Searchbutton,searchbutton);
+		
+	}
+
+
+	public String noMatchingRecordsFound() {
+		return (PageUtilities.getElementText(errorMessege));
+
 	}
 
 }

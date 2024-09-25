@@ -1,5 +1,8 @@
 package PageClasses;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,17 +50,18 @@ public class QAlegendImportProductPage {
 			PageUtilities.clickOnElement(submit);
 		}
 		
-		public void JavascriptExecutor (WebDriver driver,WebElement choosefile) {
+		/*public void JavascriptExecutor (WebDriver driver,WebElement choosefile) {
 			PageUtilities.clickUsingJavaScriptExecutor(driver, choosefile);
 			choosefile=setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
 		}
-		private WebElement setClickBoardData(String string) {
+		private void setClickBoardData(String path) {
+			StringSelection stringSelection=new StringSelection(path);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection,null);
 			
-			return null;
 		}
 		public void clickUsingJavaScriptExecutor(WebDriver driver2, Object choosefile2) {
 			PageUtilities.clickUsingJavaScriptExecutor(driver, choosefile);
 			choosefile=setClickBoardData("C:\\Users\\lenovo\\Pictures\\laptop.jpeg");
 			
-		}
+		}*/
 }

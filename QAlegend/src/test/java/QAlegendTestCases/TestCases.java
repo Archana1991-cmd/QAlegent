@@ -23,6 +23,7 @@ import PageClasses.QAlegendSuppliersPage;
 import PageClasses.QAlegendUnitsPage;
 import PageClasses.QAlegendBrandsPage;
 import PageClasses.QAlegendCategoriesPage;
+import PageClasses.QAlegendCustomerGroupPage;
 import PageClasses.QAlegendCustomerPage;
 import PageClasses.QAlegendHomePage;
 import PageClasses.QAlegendImportProductPage;
@@ -44,6 +45,7 @@ public class TestCases extends BaseClass{
 		QAlegendBrandsPage brandspage;
 		QAlegendCategoriesPage categoriespage;
 		QAlegendUnitsPage unitspage;
+		QAlegendCustomerGroupPage customergrouppage;
 		 Properties prop;
 		 FileReader reader;
 		 SoftAssert softassert;
@@ -70,8 +72,10 @@ public class TestCases extends BaseClass{
 			rolespage=new QAlegendRolesPage(driver);
 			supplierspage=new QAlegendSuppliersPage(driver);
 			importproductpage=new QAlegendImportProductPage(driver);
+			unitspage=new QAlegendUnitsPage(driver);
 			brandspage=new QAlegendBrandsPage(driver);
 			categoriespage=new QAlegendCategoriesPage(driver);
+			customergrouppage=new QAlegendCustomerGroupPage(driver);
 			softassert=new SoftAssert();
 		}
          @Test
@@ -123,7 +127,11 @@ public class TestCases extends BaseClass{
         	 rolespage.clickOnRoleAddButton();
  			 rolespage.insertRoleName("qa tester");
              rolespage.clickOnSaveButton();
-             //Assert.assertNotEquals(rolespage.insertRoleName("qa tester"),"tester");
+             
+             rolespage.deleteUser();
+ 			 rolespage.pressOkButtonToDelete();
+ 		     userpage.enterUsersearch("qa tester");
+             Assert.assertNotEquals(rolespage.insertRoleName("qa tester"),"qa tester");
              softassert.assertAll();
 		}
          
@@ -143,8 +151,8 @@ public class TestCases extends BaseClass{
   			  String mobile= randomnumber+ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
   			  supplierspage.insertSuppliers("Suppliers",name,businessname,mobile);
   			  supplierspage.clickOnSaveButton();
-  			  
-  		      softassert.assertAll();
+  			  Assert.ARRAY_MISMATCH_TEMPLATE.compareTo(name);
+  		      
         	 
 		}
          @Test
@@ -158,13 +166,34 @@ public class TestCases extends BaseClass{
         	 Random rand=new Random();
  		     int randomnumber=rand.nextInt(10000);
         	 String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
+        	 
         	 String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
         	 String contactid=randomnumber+ExcelUtilities.getNumeric(1, 2, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
         	 String mobile=ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
-        	// customerpage.insertSuppliers("Cusomers",name,contactid,mobile);
+        	 customerpage.insertSuppliers("Custmers",name,contactid,mobile);
         	 customerpage.clickOnSaveButton();
-        	 softassert.assertAll();
+        	 Assert.assertEquals(contacttype, "Custmers");
+        	 
+		} 
+         @Test
+         public void createCustomerGroup() throws IOException {
+        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
+        	 homepage.clickOnContactsOption();
+        	 customergrouppage.clickOnCustomerGroupOption();
+        	 customergrouppage.clickOnCustomerGroupAddOption();
+        	 Random rand=new Random();
+ 		     int randomnumber=rand.nextInt(10000);
+        	 String customergroupname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomerGroup.xlsx","Sheet1");
+        	 String calculationpercentage=ExcelUtilities.getNumeric(1, 1, "//src//main//java//resources//addACustomerGroup.xlsx","Sheet1");
+        	 customergrouppage.insertCustomerGroup(customergroupname,calculationpercentage);
+        	 customergrouppage.clickOnSaveButton();
+ 			 customergrouppage.clickOnSearchButton();
+ 			 Assert.assertEquals(customergroupname, "123.customergroup");
+ 			 softassert.assertAll();
+       	 
 		}
+         
+         
          @Test
          public  void  importProducts(Object choosefile) throws AWTException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
@@ -173,7 +202,7 @@ public class TestCases extends BaseClass{
         	importproductpage.clickOnImportProductsOption();
         	importproductpage.clickOnChooseFileButton();
         	 
-			importproductpage.clickUsingJavaScriptExecutor(driver,choosefile);
+			//importproductpage.clickUsingJavaScriptExecutor(driver,choosefile);
         	
         	
         	Robot robot=new Robot();
@@ -200,10 +229,12 @@ public class TestCases extends BaseClass{
     
  			 String name=ExcelUtilities.getString(1, 0, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
  			 String shortname=ExcelUtilities.getString(1, 1, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+ 			 String Allowdecimal=ExcelUtilities.getString(1, 2, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
  			 unitspage.insertUnits(name,shortname,"Yes");
  			 unitspage.clickOnSaveButton();
- 			 
- 			 softassert.assertAll();
+ 			 unitspage.enterUserSearchbutton("Abox1.");
+ 			 Assert.assertEquals(unitspage.noMatchingRecordsFound(),"No matching records found");
+			 
 			
 		}
          @Test
@@ -224,7 +255,7 @@ public class TestCases extends BaseClass{
  			 categoriespage.clickOnSaveButton();
  			 categoriespage.enterUsersearch("customer02398");
  			 Assert.assertEquals(categoriespage.NoMatchingRecordsFound(),"no matching records found");
-			 softassert.assertAll();
+			 
   			 
  		}
          @Test
@@ -245,7 +276,7 @@ public class TestCases extends BaseClass{
  			 brandspage.clickOnSaveButton();
  			 brandspage.enterUsersearch("zudioz");
  		     Assert.assertEquals(brandspage.noMatchingRecordsFound(),"No matching records found");
- 			 softassert.assertAll();
+ 			    r
  		}
         
          

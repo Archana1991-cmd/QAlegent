@@ -21,7 +21,12 @@ public class QAlegendRolesPage {
    	
    	   @FindBy(xpath = "//button[text()='Save']")
        WebElement saveButton; 
+   	   
+       @FindBy(xpath = "(//button[@class='btn btn-xs btn-danger delete_role_button'])[1]")
+       WebElement deleteUser;
        
+       @FindBy(xpath = "(//button[text()='OK'])[1]")
+       WebElement deletebutton;
        
        public QAlegendRolesPage(WebDriver driver) {
      	  this.driver=driver;
@@ -40,8 +45,9 @@ public class QAlegendRolesPage {
       	}
 
   
-	public void insertRoleName(String addRolename) {
+	public String insertRoleName(String addRolename) {
 		PageUtilities.enterText(AddRoleName, addRolename);
+		return addRolename;
 	}
 	
 	
@@ -50,6 +56,17 @@ public class QAlegendRolesPage {
 	   		PageUtilities.clickOnElement(saveButton);
 	   		
 	   	}
+
+
+	public void deleteUser() {
+		  PageUtilities.clickOnElement(deleteUser);
+	}
+
+
+	public void pressOkButtonToDelete() {
+		  PageUtilities.clickOnElement(deletebutton);
+		
+	}
 
 
 }

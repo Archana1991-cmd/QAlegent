@@ -18,7 +18,7 @@ public class QAlegendCustomerPage {
    WebElement customerAddOption;
    @FindBy(id = "contact_type")
    WebElement Contacttypebox;
-   @FindBy(xpath = "(//input[@class='form-control'])[1]")
+   @FindBy(id = "name")
    WebElement Namebox;
    @FindBy(id = "contact_id")
    WebElement Contactidbox;
