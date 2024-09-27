@@ -10,7 +10,7 @@
       <class name="QAlegendTestCases.TestCases">
       <methods>
 		
-		 <include name="addSuppliers"></include>
+		 <include name="addUnits"></include>
 		<!--<include name="addSuppliers"></include>-->
 		 <!--<include name="salesCommissionAgents"></include>  -->
 		 <!--<include name=""></include>-->

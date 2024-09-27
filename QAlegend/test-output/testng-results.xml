@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-25T17:37:41 IST" name="Suite" finished-at="2024-09-25T17:38:19 IST" duration-ms="38057">
+  <suite started-at="2024-09-27T14:57:59 IST" name="Suite" finished-at="2024-09-27T15:04:05 IST" duration-ms="365876">
     <groups>
     </groups>
-    <test started-at="2024-09-25T17:37:41 IST" name="Test" finished-at="2024-09-25T17:38:19 IST" duration-ms="38057">
+    <test started-at="2024-09-27T14:57:59 IST" name="Test" finished-at="2024-09-27T15:04:05 IST" duration-ms="365876">
       <class name="QAlegendTestCases.TestCases">
-        <test-method is-config="true" signature="initialization(java.lang.String)[pri:0, instance:QAlegendTestCases.TestCases@194bcebf]" started-at="2024-09-25T17:37:41 IST" name="initialization" finished-at="2024-09-25T17:37:59 IST" duration-ms="17581" status="PASS">
+        <test-method is-config="true" signature="initialization(java.lang.String)[pri:0, instance:QAlegendTestCases.TestCases@17497425]" started-at="2024-09-27T14:57:59 IST" name="initialization" finished-at="2024-09-27T15:03:27 IST" duration-ms="327735" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,10 +18,10 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialization -->
-        <test-method signature="addSuppliers()[pri:0, instance:QAlegendTestCases.TestCases@194bcebf]" started-at="2024-09-25T17:37:59 IST" name="addSuppliers" finished-at="2024-09-25T17:38:19 IST" duration-ms="20138" status="PASS">
+        <test-method signature="addUnits()[pri:0, instance:QAlegendTestCases.TestCases@17497425]" started-at="2024-09-27T15:03:27 IST" name="addUnits" finished-at="2024-09-27T15:04:05 IST" duration-ms="37891" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addSuppliers -->
+        </test-method> <!-- addUnits -->
       </class> <!-- QAlegendTestCases.TestCases -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->

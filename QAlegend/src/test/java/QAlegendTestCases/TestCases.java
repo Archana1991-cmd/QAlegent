@@ -2,7 +2,6 @@ package QAlegendTestCases;
 
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -10,8 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -109,11 +106,9 @@ public class TestCases extends BaseClass{
 			userpage.insertUserQAlegent(surname,firstname,lastname,email,username,password,confirmpassword);
 		    //userpage.insertUserQAlegent("Mrs","Archana","AN","archana@gmail.com","10987","archana@91","archana@91");
 			userpage.clickOnSaveButton(); 
-			
-			userpage.enterUsersearch("Archana");
+		    userpage.enterUsersearch("Archana");
 			userpage.deleteUser();
 			userpage.pressOkButtonToDelete();
-			
 			//userpage.enterUsersearch("ammutty");
 		    Assert.assertEquals(userpage.noMatchingRecordsFound(),"No matching records found");
 		    softassert.assertAll();
@@ -121,13 +116,11 @@ public class TestCases extends BaseClass{
          @Test
          public  void addRoles() throws IOException, InterruptedException {
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
-        	 
         	 homepage.clickOnUserManagementOption();
         	 rolespage.clickOnRolesOption();
         	 rolespage.clickOnRoleAddButton();
  			 rolespage.insertRoleName("qa tester");
              rolespage.clickOnSaveButton();
-             
              rolespage.deleteUser();
  			 rolespage.pressOkButtonToDelete();
  		     userpage.enterUsersearch("qa tester");
@@ -137,23 +130,21 @@ public class TestCases extends BaseClass{
          
          @Test
          public  void addSuppliers() throws IOException, InterruptedException {
+        	
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
-        	 
-        	  homepage.clickOnContactsOption();
-        	  supplierspage.clickOnSuppliersOption();
-        	  supplierspage.clickOnAddButton();
-        	  
-        	  Random rand=new Random();
-  		      int randomnumber=rand.nextInt(10000);
-  			  String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
-  			  String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
-  			  String businessname=ExcelUtilities.getString(1, 2, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
-  			  String mobile= randomnumber+ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
-  			  supplierspage.insertSuppliers("Suppliers",name,businessname,mobile);
-  			  supplierspage.clickOnSaveButton();
-  			  Assert.ARRAY_MISMATCH_TEMPLATE.compareTo(name);
-  		      
-        	 
+        	 homepage.clickOnContactsOption();
+        	 supplierspage.clickOnSuppliersOption();
+        	 supplierspage.clickOnAddButton();
+             Random rand=new Random();
+  		     int randomnumber=rand.nextInt(10000);
+  		     String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			 String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			 String businessname=ExcelUtilities.getString(1, 2, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			 String mobile= randomnumber+ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addSuppliers.xlsx", "Sheet1");
+  			 supplierspage.insertSuppliers("Suppliers",name,businessname,mobile);
+  			 supplierspage.clickOnSaveButton();
+  			 //Assert.ARRAY_MISMATCH_TEMPLATE.compareTo(name);
+  		    
 		}
          @Test
        public void createCustomer() throws IOException, InterruptedException {
@@ -162,11 +153,9 @@ public class TestCases extends BaseClass{
         	 homepage.clickOnContactsOption();
         	 customerpage.clickOnCustomerOption();
         	 customerpage.clickOnCustomerAddOption();
-        	 
         	 Random rand=new Random();
  		     int randomnumber=rand.nextInt(10000);
         	 String contacttype=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
-        	 
         	 String name=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
         	 String contactid=randomnumber+ExcelUtilities.getNumeric(1, 2, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
         	 String mobile=ExcelUtilities.getNumeric(1, 3, "//src//main//java//resources//addACustomer.xlsx","Sheet1");
@@ -177,12 +166,11 @@ public class TestCases extends BaseClass{
 		} 
          @Test
          public void createCustomerGroup() throws IOException {
+        	 
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 homepage.clickOnContactsOption();
         	 customergrouppage.clickOnCustomerGroupOption();
         	 customergrouppage.clickOnCustomerGroupAddOption();
-        	 Random rand=new Random();
- 		     int randomnumber=rand.nextInt(10000);
         	 String customergroupname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addACustomerGroup.xlsx","Sheet1");
         	 String calculationpercentage=ExcelUtilities.getNumeric(1, 1, "//src//main//java//resources//addACustomerGroup.xlsx","Sheet1");
         	 customergrouppage.insertCustomerGroup(customergroupname,calculationpercentage);
@@ -190,13 +178,12 @@ public class TestCases extends BaseClass{
  			 customergrouppage.clickOnSearchButton();
  			 Assert.assertEquals(customergroupname, "123.customergroup");
  			 softassert.assertAll();
-       	 
 		}
          
          
          @Test
          public  void  importProducts(Object choosefile) throws AWTException {
-        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
+            loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	
         	importproductpage.clickOnProductsOption();
         	importproductpage.clickOnImportProductsOption();
@@ -221,63 +208,48 @@ public class TestCases extends BaseClass{
          
 		@Test
          public void addUnits() throws IOException {
-        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 
+			 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 unitspage.clickOnProductsOption();
         	 unitspage.clickOnUnitsOption();
         	 unitspage.clickOnAddbutton();
-    
- 			 String name=ExcelUtilities.getString(1, 0, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+             String name=ExcelUtilities.getString(1, 0, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
  			 String shortname=ExcelUtilities.getString(1, 1, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
- 			 String Allowdecimal=ExcelUtilities.getString(1, 2, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+ 			 String allowdecimal=ExcelUtilities.getString(1, 2, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
  			 unitspage.insertUnits(name,shortname,"Yes");
  			 unitspage.clickOnSaveButton();
  			 unitspage.enterUserSearchbutton("Abox1.");
  			 Assert.assertEquals(unitspage.noMatchingRecordsFound(),"No matching records found");
-			 
-			
 		}
          @Test
          public void addCategories() throws IOException {
+        	 
         	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
- 			 
-        	 categoriespage.clickOnProductsOption();
+ 			 categoriespage.clickOnProductsOption();
         	 categoriespage.clickOnCategoriesOption();
         	 categoriespage.clickOnAddButton();
-        	 
-        	 Random rand=new Random();
- 		     int randomnumber=rand.nextInt(10000);
  			 String categoriesname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
  			 String categoriescode=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
- 			 
- 			 categoriespage.insertOnCategoriesNameBox(categoriesname);
+ 	         categoriespage.insertOnCategoriesNameBox(categoriesname);
  			 categoriespage.insertOnCategoryCodeBox(categoriescode);
  			 categoriespage.clickOnSaveButton();
  			 categoriespage.enterUsersearch("customer02398");
  			 Assert.assertEquals(categoriespage.NoMatchingRecordsFound(),"no matching records found");
-			 
-  			 
  		}
          @Test
          public void addBrands() throws IOException {
-        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 
+        	 loginpage.loginToQAlegend(prop.getProperty("username"),prop.getProperty("password"));
         	 brandspage.clickOnProductsOption();
  			 brandspage.clickOnBrandsOption();
  			 brandspage.clickOnAddButton();
- 			 
- 			Random rand=new Random();
-		    int randomnumber=rand.nextInt(10000);
-			String brandname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addBrands.xlsx", "Sheet1");
-			String notes=ExcelUtilities.getString(1, 1, "//src/main//java//resources//addBrands.xlsx", "Sheet1");
- 			 
+			 String brandname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addBrands.xlsx", "Sheet1");
+			 String notes=ExcelUtilities.getString(1, 1, "//src/main//java//resources//addBrands.xlsx", "Sheet1");
  			 brandspage.insertOnBrandNameBox(brandname);
  			 brandspage.insertOnshortdiscriptionBox(notes);
  			 brandspage.clickOnSaveButton();
  			 brandspage.enterUsersearch("zudioz");
- 		     Assert.assertEquals(brandspage.noMatchingRecordsFound(),"No matching records found");
- 			    r
+ 		     Assert.assertEquals(brandspage.noMatchingRecordsFound(),"No matching records found");   
  		}
-        
          
 }

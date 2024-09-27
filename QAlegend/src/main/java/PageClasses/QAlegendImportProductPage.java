@@ -1,9 +1,5 @@
 package PageClasses;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
