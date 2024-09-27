@@ -1,5 +1,8 @@
 package Utilities;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -82,7 +85,10 @@ public class PageUtilities {
 		executor.executeScript("argument[0]", element);
 		
 	}
-	
+	public void setClickBoardData(String path) {
+		StringSelection stringSelection=new StringSelection(path);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection,null);
+	}	
 	
 	public static void scrollBy(WebDriver driver) {
 		JavascriptExecutor executor=(JavascriptExecutor)driver;

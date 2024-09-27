@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Utilities.PageUtilities;
+import Utilities.WaitUtilities;
 
 public class QAlegendUserPage {
              WebDriver driver;
@@ -90,6 +91,11 @@ public class QAlegendUserPage {
 	public String noMatchingRecordsFound() {
 		
 		return (PageUtilities.getElementText(errorMessege));
+	}
+
+	public void clickOnUserOption() {
+		//WaitUtilities.class
+		
 	}
 
 	}

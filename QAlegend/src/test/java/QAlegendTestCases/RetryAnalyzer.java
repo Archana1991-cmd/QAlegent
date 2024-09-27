@@ -1,8 +1,10 @@
 package QAlegendTestCases;
 
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class RetryAnalyzer {
+public class RetryAnalyzer implements IRetryAnalyzer {
 int counter=0;
 int retrylimit=3;
 
