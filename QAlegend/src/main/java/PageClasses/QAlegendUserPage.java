@@ -36,7 +36,7 @@ public class QAlegendUserPage {
              WebElement submituserbuttonOption;
              
              @FindBy(xpath="//input[@class='form-control input-sm']")
-             WebElement searchButton;
+             WebElement SearchButton;
 
              
              @FindBy(xpath="(//button[text()=' Delete'])[1]")
@@ -91,8 +91,8 @@ public class QAlegendUserPage {
 		
 	}
 
-     public void enterUsersearch() {
-	    PageUtilities.enterText(searchButton);
+     public void enterUsersearch(String searchButton) {
+	    PageUtilities.enterText(SearchButton,searchButton);
      }
 
 
