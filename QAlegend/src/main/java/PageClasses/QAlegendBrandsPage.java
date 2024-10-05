@@ -1,11 +1,15 @@
 package PageClasses;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utilities.ExcelUtilities;
 import Utilities.PageUtilities;
+import Utilities.fakerUtility;
 
 public class QAlegendBrandsPage {
 	    WebDriver driver;
@@ -29,10 +33,10 @@ public class QAlegendBrandsPage {
 	    WebElement savebutton;
 	    
 	    @FindBy(xpath = "(//input[@class='form-control input-sm'])[1]")
-	    WebElement searchbutton;
+	    WebElement searchbox;
 	    
-	    @FindBy(xpath = "//td[text()='No matching records found']")
-	    WebElement errorMessege;
+	    @FindBy(xpath = "(//tr[@role='row']//td)[1]")
+	    WebElement brandErrorMessege;
 
         public QAlegendBrandsPage(WebDriver driver) {
         	this.driver=driver;
@@ -40,13 +44,13 @@ public class QAlegendBrandsPage {
         	}
 
         public void clickOnProductsOption() {
-			PageUtilities.clickOnElement(productsoption);
-			
+		
+			productsoption.click();
 		}
 
 		public void clickOnBrandsOption() {
-			PageUtilities.clickOnElement(brandsoption);
 			
+			brandsoption.click();
 		}
 
 
@@ -55,7 +59,9 @@ public class QAlegendBrandsPage {
 			
 		}
 
-		public String insertOnBrandNameBox(String brandname) {
+		public String insertOnBrandNameBox(String brandname) throws IOException {
+			
+			 
 			PageUtilities.enterText(BrandNameBox, brandname);
 			return brandname;
 			
@@ -69,12 +75,12 @@ public class QAlegendBrandsPage {
 			
 		}
 		 public void enterUsersearch(String brandname) {
-			    PageUtilities.enterText(searchbutton,  brandname);
+			    PageUtilities.enterText(searchbox,  fakerUtility.randomNumberGenerator()+brandname);
 		     }
 
-		public String noMatchingRecordsFound() {
+		public boolean MatchingRecordsFound() {
 			
-			return (PageUtilities.getElementText(errorMessege));
+			return (PageUtilities.isElementDisplayed(brandErrorMessege));
 		}
 
 		

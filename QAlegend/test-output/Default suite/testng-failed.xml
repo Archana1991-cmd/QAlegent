@@ -5,15 +5,7 @@
     <classes>
       <class name="QAlegendTestCases.TestCases">
         <methods>
-          <include name="addRoles"/>
-          <include name="createCustomerGroup"/>
-          <include name="createUser"/>
-          <include name="createCustomer"/>
-          <include name="addCategories"/>
           <include name="initialization"/>
-          <include name="addBrands"/>
-          <include name="addUnits"/>
-          <include name="importProducts"/>
           <include name="addSuppliers"/>
         </methods>
       </class> <!-- QAlegendTestCases.TestCases -->

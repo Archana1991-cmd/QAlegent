@@ -5,19 +5,19 @@
 		 <listener class-name="QAlegendTestCases.Listeners"></listener>
 	</listeners>
 	<parameter name="Browser" value="Edge"></parameter>
-  <test thread-count="5" name="Test">
+  <test thread-count="5" name="Test" parallel="methods">
+	<!--<groups>
+		<run>
+			<include name="smoketest"></include>
+		</run>
+	</groups>-->
     <classes>
       <class name="QAlegendTestCases.TestCases">
       <methods>
 		
-		 <include name="addUnits"></include>
-		<!--<include name="addSuppliers"></include>-->
-		 <!--<include name="salesCommissionAgents"></include>  -->
-		 <!--<include name=""></include>-->
-		 <!--<include name="createCustomer"></include>-->
-		 <!--<include name="importProducts"></include>-->
-         <!--<include name="addUnits"></include> -->
-		  <!--<include name="addCategories"></include> --> 
+		 <include name="verifyAddBrands"></include>
+		 
+		 
 		 </methods>
 	  </class>
 	   </classes>

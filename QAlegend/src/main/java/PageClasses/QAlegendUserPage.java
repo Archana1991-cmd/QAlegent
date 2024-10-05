@@ -1,12 +1,16 @@
 package PageClasses;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utilities.ExcelUtilities;
 import Utilities.PageUtilities;
 import Utilities.WaitUtilities;
+import Utilities.fakerUtility;
 
 public class QAlegendUserPage {
              WebDriver driver;
@@ -54,12 +58,24 @@ public class QAlegendUserPage {
 	}
 	
 	public void clickOnUserAddOption() {
+		 
+		 WaitUtilities.waitForElementTobeClickable(userAddOption, 2);
   		 PageUtilities.clickOnElement(userAddOption);
   	     }
 
 
-	public void insertUserQAlegent(String surname,String firstname,String lastname,String email,String username,String password,String confirmpassword) {
-		 
+	public void insertUserQAlegent() throws IOException {
+		
+		String surname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String firstname=ExcelUtilities.getString(1, 1, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String lastname=ExcelUtilities.getString(1, 2, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String email= fakerUtility.randomNumberGenerator()+ExcelUtilities.getString(1, 3, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String username= fakerUtility.randomNumberGenerator()+ExcelUtilities.getString(1, 4, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String password=ExcelUtilities.getString(1, 5, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		String confirmpassword=ExcelUtilities.getString(1, 6, "//src//main//java//resources//userDetails.xlsx", "Sheet1");
+		
+		
+		
 			    PageUtilities.enterText(Surnamebox, surname);
 				PageUtilities.enterText(Firstnamebox, firstname);
 				PageUtilities.enterText(Lastnamebox, lastname);
@@ -75,8 +91,8 @@ public class QAlegendUserPage {
 		
 	}
 
-     public void enterUsersearch(String username) {
-	    PageUtilities.enterText(searchButton, username);
+     public void enterUsersearch() {
+	    PageUtilities.enterText(searchButton);
      }
 
 

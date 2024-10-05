@@ -1,10 +1,13 @@
 package PageClasses;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utilities.ExcelUtilities;
 import Utilities.PageUtilities;
 
 public class QAlegendCategoriesPage {
@@ -48,14 +51,16 @@ public class QAlegendCategoriesPage {
 
 
 
-		public String insertOnCategoriesNameBox(String categoriesname) {
-			PageUtilities.enterText(CategoriesNamebox, categoriesname);
-			return categoriesname;
+		public String insertOnCategoriesNameBox() throws IOException {
+			 String categoriesname=ExcelUtilities.getString(1, 0, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
+			 PageUtilities.enterText(CategoriesNamebox, categoriesname);
+			 return categoriesname;
 			
 		}
-		public String insertOnCategoryCodeBox(String categoriescode) {
+		public void insertOnCategoryCodeBox() throws IOException {
+			String categoriescode=ExcelUtilities.getString(1, 1, "//src//main//java//resources//addCategory.xlsx", "Sheet1");
 			PageUtilities.enterText(CategoriesCodebox, categoriescode);
-			return categoriescode;
+			
 			
 		}
 

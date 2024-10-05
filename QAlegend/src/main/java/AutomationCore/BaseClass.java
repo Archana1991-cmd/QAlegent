@@ -2,6 +2,7 @@ package AutomationCore;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
@@ -16,7 +17,7 @@ import com.google.common.io.Files;
 public class BaseClass {
 	
 		 public WebDriver driver;
-		   
+		 public String excelfilepath1="\\src\\main\\java\\resources\\addSalesCommission.xlsx"  ;
 		   public WebDriver browserInitilization(String browsername)
 		   {
 			   if (browsername.equalsIgnoreCase("Chrome"))
@@ -33,7 +34,8 @@ public class BaseClass {
 			   {
 				   System.out.println("Invalid browser");
 			   }
-			   driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+			   //driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+			   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			   return driver;
 		   
 		   }

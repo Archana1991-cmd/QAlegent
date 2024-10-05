@@ -4,46 +4,41 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtilities {
-       WebDriver driver;
-       public void waitUser(WebElement user) {
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(user));
+       static WebDriver driver;
+       
+       public WaitUtilities(WebDriver driver) {
+  		 this.driver=driver;
+  		 
+  	}
+       public static void waitForElementVisibility(WebElement element,int timeoutInSeconds) {
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
 	   }
-       public void waitRole(WebElement role) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(role));
+       public static void waitForElementTobeClickable(WebElement element,int timeoutInSeconds) {
+   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+   		wait.until(ExpectedConditions.elementToBeClickable(element));
    	   }
-       public void waitSupplier(WebElement suppplier) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(suppplier));
+       public static void waitForPageTitle(String title,int timeoutInSeconds) {
+   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+   		wait.until(ExpectedConditions.titleIs(title));
    	   }
-       public void waitCustomer(WebElement customer) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(customer));
+       public static void waitForAlertToBePresent(String title,int timeoutInSeconds) {
+   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+   		wait.until(ExpectedConditions.alertIsPresent());
    	   }
-       public void waitCustomerGroup(WebElement customergroup) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(customergroup));
+       public static void waitForAFrameoBeAvailableAndSwitchToIt(int timeoutInSeconds,WebElement element) {
+   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+   		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
    	   }
-       public void waitImportProduct(WebElement importproduct) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(importproduct));
+       public static void waitForTextToBePresent(int timeoutInSeconds,WebElement element,String value) {
+   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+   		wait.until(ExpectedConditions.textToBePresentInElement(element, value));
    	   }
-       public void waitUnits(WebElement units) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(units));
-   	   }
-       public void waitCategories(WebElement categories) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(categories));
-   	   }
-       public void waitBrands(WebElement brands) {
-   		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-   		wait.until(ExpectedConditions.elementToBeClickable(brands));
-   	   }
+       
       
 }

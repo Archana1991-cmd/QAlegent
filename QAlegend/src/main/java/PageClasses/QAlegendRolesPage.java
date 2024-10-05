@@ -13,11 +13,14 @@ public class QAlegendRolesPage {
        @FindBy(xpath="(//span[@class='title'])[3]")
        WebElement roles;
    	
-   	   @FindBy(xpath="//a[@class='btn btn-block btn-primary']")
+   	   @FindBy(xpath ="//a[@class='btn btn-block btn-primary']")
        WebElement roleAddButton;
    	
    	   @FindBy(xpath = "//input[@class='form-control']")
    	   WebElement AddRoleName;
+   	   
+   	   @FindBy(xpath ="(//ins[@class='iCheck-helper'])[2]")
+   	   WebElement userOption;
    	
    	   @FindBy(xpath = "//button[text()='Save']")
        WebElement saveButton; 
@@ -45,11 +48,14 @@ public class QAlegendRolesPage {
       	}
 
   
-	public String insertRoleName(String addRolename) {
-		PageUtilities.enterText(AddRoleName, addRolename);
-		return addRolename;
+	public String insertRoleName(String addrolename) {
+		PageUtilities.enterText(AddRoleName, addrolename);
+		return addrolename;
 	}
-	
+	public void clickOnUserOption() {
+		PageUtilities.clickOnElement(userOption);
+		
+	}
 	
 	 public void clickOnSaveButton() {
 	   		
@@ -67,6 +73,5 @@ public class QAlegendRolesPage {
 		  PageUtilities.clickOnElement(deletebutton);
 		
 	}
-
 
 }

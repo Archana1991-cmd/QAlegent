@@ -1,11 +1,14 @@
 package PageClasses;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import Utilities.ExcelUtilities;
 import Utilities.PageUtilities;
 
 public class QAlegendUnitsPage {
@@ -52,10 +55,14 @@ public class QAlegendUnitsPage {
 	}
 	
 	
-	public void insertUnits(String name, String shortname, String allowdecimal) {
+	public String insertUnits() throws IOException {
+		 String name=ExcelUtilities.getString(1, 0, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+		 String shortname=ExcelUtilities.getString(1, 1, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
+		 String allowdecimal=ExcelUtilities.getString(1, 2, "\\src\\main\\java\\resources\\addUnits.xlsx", "Sheet1");
 		PageUtilities.enterText(Name, name);
 		PageUtilities.enterText(Shortname, shortname);
-		PageUtilities.dropdownSelectByVisibleText(Allowdecimal, allowdecimal);;
+		PageUtilities.dropdownSelectByVisibleText(Allowdecimal, allowdecimal);
+		return name;
 	}
 
 	public void clickOnSaveButton() {
